@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do list Application</title>
+    <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bodyContainer">
+        
+        <div class="tabContainer">
+            <h1>TO DO LIST</h1>
+            <!-- TAB 1 BUTTON -->
+            <div class="page1" id="page1" onclick="showTab('tab1',this)">
+                <i class="fa-regular fa-sun"></i>
+                <a href="#">My day</a>
+            </div> 
+
+            <!-- TAB 2 BUTN -->
+            <div class="page1"  onclick="showTab('tab2',this)">
+                <i class="fa-regular fa-star"></i>
+                <a href="#">Important</a>
+            </div> 
+
+            <!-- TAB 3 BTN -->
+            <div class="page1"  onclick="showTab('tab3',this)">
+                <i class="fa-regular fa-rectangle-list"></i>
+                <a href="#">Planned</a>
+            </div> 
+
+            <!-- TAB 4 BTN -->
+            <div class="page1" onclick="showTab('tab4',this)">
+                <i class="fa-regular fa-user"></i>
+                <a href="#" >Assigned to me</a>
+            </div> 
+
+            <!-- TAB 5 BTN -->
+            <div class="page1" onclick="showTab('tab5',this)">
+                <i class="fa-regular fa-building"></i>
+                <a href="#" >All task</a>
+            </div> 
+
+             
+        </div>
+        <div class="todoContainer">
+            <div class="todoContent">
+                <div class="menu" id="menu">
+                    <p id="edit">Edit</p>
+                    <p id="delete">Delete</p>
+                </div>
+
+
+                <!-- FORM TO DISPLAZ FOR EDITING -->
+                <div id="editForm" style="display: none ;">
+                    <input type="text" id="editTaskInfo" placeholder="Task">
+                    <input type="date" id="editTaskDate">
+                    <input type="time" id="editTaskTime">
+                    <div class="editBtn">
+                        <button id="saveEdit">Save</button>
+                        <button id="cancelEdit">Cancel</button>
+                    </div>
+                    
+                </div>
+                <!-- TAB 1 -->
+                <div id="tab1" class="tab" style="display: block;">
+                    <div class="div">
+                        <h1>My Day</h1>
+                    <p id="todayDate"></p>  <!--TODO add js code to show live date -->
+                    </div>
+                    
+                    <div class="taskContainer" id="taskContainer">
+                         <!-- Container where cloned tasks will appear -->
+                    </div>
+
+                    <!-- Hidden task template (This will be cloned) -->
+                    <div class="taskBar" id="taskBar" style="display: none;">
+                        <div class="task1"><input type="checkbox" onclick="checkBox(this)"><p id="taskInfo"><!--taskInfo--></p> <br></div>  
+                        <div class="task2"><p id="taskDate"><!--taskDate--></p> <p id="taskTime"><!--taskTime--></p></div>  
+                    </div>
+
+                    <div class="newTask">
+                        <input type="text" id="task" class="task" placeholder="What is to be done">
+                        <input type="date" name="date" id="date" class="date">
+                        <input type="time" id="time" class="time">
+                        <button class="btn" id="save" onclick="save(this)">Save</button>
+                    </div>
+                    <button title="Add New Task" class="btn1" onclick="btn(this)"><i class="fa-regular fa-square-plus"></i></button>
+                </div>
+                <!-- TAB 2 -->
+                <div id="tab2" class="tab">
+                    <div class="div">
+                        <h1>Important</h1>
+                    <p id="todayDate"></p> <!-- TODO add js code to show live date -->
+                    </div>
+                    
+                    <div class="taskContainer" id="taskContainer">
+                         <!-- Container where cloned tasks will appear -->
+                    </div>
+                      
+                    <!-- Hidden task template (This will be cloned) -->
+                    <div class="taskBar" id="taskBar" style="display: none;"> 
+                      <div class="task1"><input type="checkbox" onclick="checkBox(this)"><p id="taskInfo"><!--taskInfo--></p> <br></div>  
+                      <div class="task2"><p id="taskDate"><!--taskDate--></p> <p id="taskTime"><!--taskTime--></p></div>  
+                    </div>
+                    <div class="newTask">
+                        <input type="text" id="task" class="task" placeholder="What is to be done">
+                        <input type="date" name="date" id="date" class="date">
+                        <input type="time" id="time" class="time">
+                        <button class="btn"  onclick="save(this)">Save</button>
+                    </div>
+                    <button title="Add New Task" class="btn1" onclick="btn(this)"><i class="fa-regular fa-square-plus"></i></button>
+                </div>
+                <!-- TAB 3 -->
+                <div id="tab3" class="tab">
+                    <div class="div">
+                        <h1>Planned</h1>
+                    <p id="todayDate"></p> <!-- TODO add js code to show live date -->
+                    </div>
+                    
+                    <div class="taskContainer" id="taskContainer">
+                         <!-- Container where cloned tasks will appear -->
+                    </div>
+                      
+                    <!-- Hidden task template (This will be cloned) -->
+                    <div class="taskBar" id="taskBar" style="display: none;">
+                      <div class="task1"><input type="checkbox" onclick="checkBox(this)"><p id="taskInfo"><!--taskInfo--></p> <br></div>  
+                      <div class="task2"><p id="taskDate"><!--taskDate--></p> <p id="taskTime"><!--taskTime--></p></div>  
+                    </div>
+                    <div class="newTask" id="newTask3">
+                        <input type="text" id="task" class="task" placeholder="What is to be done">
+                        <input type="date" name="date" id="date" class="date">
+                        <input type="time" id="time" class="time">
+                        <button class="btn" onclick="save(this)">Save</button>
+                    </div>
+                    <button title="Add New Task" class="btn1" onclick="btn(this)"><i class="fa-regular fa-square-plus"></i></button>
+                </div>
+                <!-- TAB 4 -->
+                <div id="tab4" class="tab">
+                    <div class="div">
+                        <h1>Assigned to me</h1>
+                    <p id="todayDate"></p> <!-- TODO add js code to show live date -->
+                    </div>
+                    
+                    <div class="taskContainer" id="taskContainer">
+                         <!-- Container where cloned tasks will appear -->
+                    </div>
+                      
+                    <!-- Hidden task template (This will be cloned) -->
+                    <div class="taskBar" id="taskBar" style="display: none;">
+                      <div class="task1"><input type="checkbox" onclick="checkBox(this)"><p id="taskInfo"><!--taskInfo--></p> <br></div>  
+                      <div class="task2"><p id="taskDate"><!--taskDate--></p> <p id="taskTime"><!--taskTime--></p></div>  
+                    </div>
+                    <div class="newTask">
+                        <input type="text" id="task" class="task" placeholder="What is to be done">
+                        <input type="date" name="date" id="date" class="date">
+                        <input type="time" id="time" class="time">
+                        <button class="btn"  onclick="save(this)">Save</button>
+                    </div>
+                    <button title="Add New Task" class="btn1" onclick="btn(this)"><i class="fa-regular fa-square-plus"></i></button>
+                </div>
+                <!-- TAB 5 -->
+                <div id="tab5" class="tab">
+                    <div class="div">
+                        <h1>All task</h1>
+                    <p id="todayDate"></p> <!-- TODO add js code to show live date -->
+                    </div>
+                    
+                    <div class="taskContainer" id="taskContainer">
+                         <!-- Container where cloned tasks will appear -->
+                    </div>
+                      
+                    <!-- Hidden task template (This will be cloned) -->
+                    <div class="taskBar" id="taskBar" style="display: none;">
+                      <div class="task1"><input type="checkbox" onclick="checkBox(this)"><p id="taskInfo"><!--taskInfo--></p> <br></div>  
+                      <div class="task2"><p id="taskDate"><!--taskDate--></p> <p id="taskTime"><!--taskTime--></p></div>  
+                    </div>
+                    <div class="newTask">
+                        <input type="text" id="task" class="task" placeholder="What is to be done">
+                        <input type="date" name="date" id="date" class="date">
+                        <input type="time" id="time" class="time">
+                        <button class="btn" onclick="save(this)">Save</button>
+                    </div>
+                    <!-- <button title="Add New Task" class="btn1" onclick="btn(this)"><i class="fa-regular fa-square-plus"></i></button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
