@@ -1,3 +1,15 @@
+// REPONSIBLE FOR POP UP MESAGES
+function showPopUp(message){
+    const popup = document.getElementById('popup')
+    popup.textContent = message;
+    popup.classList.add('show')
+
+    setTimeout(() =>{
+        popup.classList.remove('show')
+    }, 3000)
+}
+
+
 // Responsible for displaying live date
 let liveDate = document.querySelectorAll('#todayDate');
 liveDate.forEach(lDate => lDate.textContent =
@@ -74,6 +86,8 @@ function save(saveThis) {
     if(!output) return alert('taskconatiner not found'); //DEBUGG
      
     taskContainer.style.visibility = 'hidden'
+
+    showPopUp('Task Added Successfully ✨');
 }
 
 
@@ -85,10 +99,24 @@ function checkBox(thisCheckBox) {
     if (text) { // Ensure that the element exists before applying class
       text.style.textDecoration = (text.style.textDecoration === 'line-through') ? 'none' : 'line-through'
     }
+    setTimeout(() => {
+        let accomplishedTask = thisCheckBox.closest('.taskBar')
+        if (accomplishedTask) {
+            accomplishedTask.classList.add('hidden');
+    
+            accomplishedTask.addEventListener('transitionend', function () {
+                accomplishedTask.remove();
+            }, { once: true }); // Ensures it runs only once
+
+        }
+        showPopUp('Hurray Task Accomplished!! 🎉');
+    },700);
+     
+
 }
 
 
-// RESPONSIBLE FOR DELETING 
+// RESPONSIBLE FOR DISPLAYING MENU
 let menu = document.getElementById('menu');
 let selectedDiv = null;
 document.addEventListener('contextmenu', function(e){
@@ -100,27 +128,24 @@ document.addEventListener('contextmenu', function(e){
         menu.style.left = `${e.clientX}px`;
         menu.style.display = 'flex';
     }
+    
 });
+//RESPONSIBLE FOR DELETING
+document.getElementById('delete').addEventListener('click', function () {
+    if (selectedDiv) {
+        selectedDiv.classList.add('hidden');
 
-document.getElementById('delete').addEventListener("click", function(e){
-    if(selectedDiv){
-        selectedDiv.remove();
-        menu.style.display = 'none';
+        selectedDiv.addEventListener('transitionend', function () {
+            selectedDiv.remove();
+            menu.style.display = 'none';
+            showPopUp('Task deleted successfully!🚮')
+        }, { once: true });
     }
-})
+});
 
 document.addEventListener('click',function(){
     menu.style.display = 'none';
 })
-
-
-// RESPONSIBLE FOR EDITING TASK
-document.getElementById('delete').addEventListener("click", function(e){
-    if(selectedDiv){
-        selectedDiv.remove();
-        menu.style.display = 'none';
-    }
-});
 
 
 // RESPONSIBLE FOR EDITING TASK
@@ -147,10 +172,16 @@ document.getElementById('saveEdit').addEventListener("click", function(e){
         selectedDiv.querySelector('#taskInfo').innerText = document.getElementById('editTaskInfo').value;
         selectedDiv.querySelector('#taskDate').innerText = document.getElementById('editTaskDate').value;
         selectedDiv.querySelector('#taskTime').innerText = document.getElementById('editTaskTime').value;
+        let editTaskInfo = document.getElementById('editTaskInfo').value; 
+        let editTaskTime = document.getElementById('editTaskTime').value; 
+        let editTaskDate = document.getElementById('editTaskDate').value; 
+
+        if(editTaskInfo === '') return alert('Please fill in the task input field.');
 
         // Hide the edit form
         editForm.style.display = 'none';
     }
+    showPopUp('Task Edited Successfully ✏️')
 });
 
 document.getElementById('cancelEdit').addEventListener("click", function(e){
