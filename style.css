@@ -5,6 +5,7 @@
 body{
     background-color: #181C14;
 }
+/* RESPONSIBLE  FOR THE RIGHT CLICK MENU */
 .menu{
     position: absolute;
     height: 70px;
@@ -25,7 +26,7 @@ body{
     border-bottom: 1px solid #ECDFCC;
     cursor: pointer;
 }
-
+/* RESPONSIBLE FOR POPUP MESSAGES */
 .popup{
     position: fixed;
     bottom: 20px;
@@ -53,6 +54,7 @@ h1,p {color: #ECDFCC;}
     background-color: #181C14;
 
 }
+/* CONTAINS THE NAVBAR  */
 .tabContainer{
     width: 19%;
     height: 93vh;
@@ -123,6 +125,7 @@ h1,p {color: #ECDFCC;}
     width: 100%;
     border-radius: 5px;
 }
+/* RESPONSILR FOR TASK TEMPLATE */
 .taskBar {
     opacity: 1;
     visibility: visible;
@@ -172,6 +175,7 @@ h1,p {color: #ECDFCC;}
 }button .fa-square-plus, .fa-bars{ font-size: 18px; color: #ECDFCC; }
 button:hover{background-color:#34382d ; transition: 0.3s;}
 
+/* RESPONSIBLE FOR TASK INPUT */
 .newTask{
     visibility: hidden;
     position: fixed;
@@ -214,7 +218,7 @@ button:hover{background-color:#34382d ; transition: 0.3s;}
     background-color: #3C3D37;
 }
 
-
+/* RESPONSIBLE FOR EDIT FORM  */
 #editForm {
     background-color: #1d2317;
     position: absolute;
