@@ -12,41 +12,45 @@
     <div class="bodyContainer">
         
         <div class="tabContainer">
+            <i class="fa-solid fa-bars" onclick="showBar()"></i>
             <h1>TO DO LIST</h1>
             <!-- TAB 1 BUTTON -->
             <div class="page1" id="page1" onclick="showTab('tab1',this)">
                 <i class="fa-regular fa-sun"></i>
-                <a href="#">My day</a>
+                <a href="#" class="page">My day</a>
             </div> 
 
             <!-- TAB 2 BUTN -->
             <div class="page1"  onclick="showTab('tab2',this)">
                 <i class="fa-regular fa-star"></i>
-                <a href="#">Important</a>
+                <a href="#" class="page">Important</a>
             </div> 
 
             <!-- TAB 3 BTN -->
             <div class="page1"  onclick="showTab('tab3',this)">
                 <i class="fa-regular fa-rectangle-list"></i>
-                <a href="#">Planned</a>
+                <a href="#" class="page">Planned</a>
             </div> 
 
             <!-- TAB 4 BTN -->
             <div class="page1" onclick="showTab('tab4',this)">
                 <i class="fa-regular fa-user"></i>
-                <a href="#" >Assigned to me</a>
+                <a href="#"  class="page">Assigned to me</a>
             </div> 
 
             <!-- TAB 5 BTN -->
             <div class="page1" onclick="showTab('tab5',this)">
                 <i class="fa-regular fa-building"></i>
-                <a href="#" >All task</a>
+                <a href="#"  class="page">All task</a>
             </div> 
 
              
         </div>
         <div class="todoContainer">
             <div class="todoContent">
+                <!-- bar -->
+                <i class="fa-solid fa-bars" onclick="showBar()"></i>
+                <!--  -->
                 <div class="menu" id="menu">
                     <p id="edit">Edit</p>
                     <p id="delete">Delete</p>
@@ -178,7 +182,7 @@
                       
                     <!-- Hidden task template (This will be cloned) -->
                     <div class="taskBar" id="taskBar" style="display: none;">
-                      <div class="task1"><input type="checkbox" onclick="checkBox(this)"><p id="taskInfo"><!--taskInfo--></p> <br></div>  
+                      <div class="task1"><input type="checkbox" onclick="checkBox(this)" style="display: none;"><p id="taskInfo"><!--taskInfo--></p> <br></div>  
                       <div class="task2"><p id="taskDate"><!--taskDate--></p> <p id="taskTime"><!--taskTime--></p></div>  
                     </div>
                     <div class="newTask">

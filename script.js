@@ -87,7 +87,9 @@ function save(saveThis) {
      
     taskContainer.style.visibility = 'hidden'
 
-    showPopUp('Task Added Successfully ✨');
+    setTimeout(()=>{
+        showPopUp('Task Added Successfully ✨');
+    },800) 
 }
 
 
@@ -109,10 +111,12 @@ function checkBox(thisCheckBox) {
             }, { once: true }); // Ensures it runs only once
 
         }
-        showPopUp('Hurray Task Accomplished!! 🎉');
+        
     },700);
      
-
+    setTimeout(()=>{
+        showPopUp('Hurray Task Accomplished!! 🎉');
+    },1000) 
 }
 
 
@@ -181,7 +185,9 @@ document.getElementById('saveEdit').addEventListener("click", function(e){
         // Hide the edit form
         editForm.style.display = 'none';
     }
-    showPopUp('Task Edited Successfully ✏️')
+    setTimeout(()=>{
+        showPopUp('Task Edited Successfully ✏️')
+    },800) 
 });
 
 document.getElementById('cancelEdit').addEventListener("click", function(e){
@@ -211,3 +217,57 @@ function mergeTasks() {
         });
     });
 }
+
+
+
+
+
+
+
+//PHONE VIEW
+//FOR DISPLAYING SIDE BAR
+let tabContainer = document.querySelector('.tabContainer');
+function showBar() {
+if(tabContainer.classList.contains('display')){
+    tabContainer.classList.remove('display');
+    tabContainer.addEventListener('transitionend',function(){
+        tabContainer.style.display = 'none';
+    },{once: true})
+}else{
+    tabContainer.style.display= 'block';
+    setTimeout(()=>{
+        tabContainer.classList.add('display');
+    },10)
+}
+setTimeout(() =>{
+    document.addEventListener('click', outClick)
+},100)
+}
+
+
+function outClick(e){
+    if (!tabContainer.contains(e.target) && !e.target.classList.contains('fa-bars')) {
+        setTimeout(() => { tabContainer.classList.remove('display');},10)
+        tabContainer.addEventListener('transitionend', () =>{
+            tabContainer.style.display = 'none';
+        },{once: true})
+    }
+
+    if(window.innerWidth <= 600){
+        let page = document.querySelector('.page1')
+        if(e.target.classList.contains('page1') || e.target.classList.contains('page')){
+            console.log(e.target != page)
+            setTimeout(()=>{
+               setTimeout(() => { tabContainer.classList.remove('display');},10)
+                  tabContainer.addEventListener('transitionend', () =>{
+                  tabContainer.style.display = 'none';
+            },{once: true})  
+         },400)
+
+        }
+}
+document.removeEventListener('click',outClick)
+
+
+}
+
