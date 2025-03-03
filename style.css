@@ -5,6 +5,10 @@
 
 body{
     background-color: #181C14;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+label{
+    color: #ECDFCC;
 }
 /* RESPONSIBLE  FOR THE RIGHT CLICK MENU */
 .menu{
@@ -336,7 +340,7 @@ button:hover{background-color:#34382d ; transition: 0.3s;}
         position: fixed;
         bottom: 90px;
         width: 200px;
-        height: 200px;
+        height: 250px;
     }
 }
 
