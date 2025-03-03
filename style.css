@@ -340,7 +340,10 @@ button:hover{background-color:#34382d ; transition: 0.3s;}
         position: fixed;
         bottom: 90px;
         width: 200px;
-        height: 250px;
+        height: 220px;
+    }
+    .newTask .btn{
+        height: 100%;
     }
 }
 
