@@ -256,7 +256,7 @@ function outClick(e){
     if(window.innerWidth <= 600){
         let page = document.querySelector('.page1')
         if(e.target.classList.contains('page1') || e.target.classList.contains('page')){
-            console.log(e.target != page)
+            // console.log(e.target != page)
             setTimeout(()=>{
                setTimeout(() => { tabContainer.classList.remove('display');},10)
                   tabContainer.addEventListener('transitionend', () =>{
